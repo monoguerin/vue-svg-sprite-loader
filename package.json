@@ -18,7 +18,8 @@
     "sprite",
     "inline",
     "ie11",
-    "webpack-loader"
+    "webpack-loader",
+    "svg-inline"
   ],
   "author": "monoguerin",
   "license": "MIT",
