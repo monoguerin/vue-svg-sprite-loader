@@ -14,7 +14,7 @@ module.exports = function (content) {
   function convertToVueRender(symbol) {
     var key = symbol && symbol.$ && symbol.$.id;
     var viewBox = symbol && symbol.$ && symbol.$.viewBox;
-    var xmlns = symbol && symbol.$ && symbol.$.xmlns;
+    var xmlns = (symbol && symbol.$ && symbol.$.xmlns) || "http://www.w3.org/2000/svg";
     var path = symbol && symbol.path && symbol.path[0] && symbol.path[0].$ && symbol.path[0].$.d;
 
     if (!!key && !!viewBox && !!xmlns && !!path) {
