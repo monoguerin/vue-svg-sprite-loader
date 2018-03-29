@@ -19,7 +19,6 @@ module.exports = function (content) {
 
     if (!!key && !!viewBox && !!xmlns && !!path) {
       var openTag = "<svg xmlns='" + xmlns + "' aria-labelledby='" + key + "' viewBox='" + viewBox + "'>";
-      var titleTag = "<title>" + key + "</title>";
       var pathTag = '';
       for (let i = 0; i < symbol.path.length; i++) {
         if (symbol.path[i].$ && symbol.path[i].$.d) {
@@ -27,7 +26,7 @@ module.exports = function (content) {
         }
       }
       var closeTag = "</svg>";
-      var template = openTag + titleTag + pathTag + closeTag;
+      var template = openTag + pathTag + closeTag;
       var compiled = compiler.compileToFunctions(template, {preserveWhitespace: false});
 
       var finalObj = 'render:' + compiled.render;
