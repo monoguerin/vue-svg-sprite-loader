@@ -1,10 +1,12 @@
 var xml2js = require('xml2js');
 var compiler = require('vue-template-compiler');
+var loaderUtils = require('loader-utils');
 
 module.exports = function (content) {
   this.cacheable && this.cacheable(true);
   this.addDependency(this.resourcePath);
   var cb = this.async();
+  var query = loaderUtils.getOptions(this) || {};
 
   var iconRequested = this._module.rawRequest.substring(this._module.rawRequest.lastIndexOf('?')  + 1);
 
@@ -19,7 +21,7 @@ module.exports = function (content) {
 
     if (!!key && !!viewBox && !!xmlns && !!path) {
       var openTag = "<svg xmlns='" + xmlns + "' aria-labelledby='" + key + "' viewBox='" + viewBox + "'>";
-      var titleTag = "<title>" + key + "</title>";
+      var titleTag = query.removeTitle ? "" : "<title>" + key + "</title>";
       var pathTag = '';
       for (let i = 0; i < symbol.path.length; i++) {
         if (symbol.path[i].$ && symbol.path[i].$.d) {

@@ -16,7 +16,11 @@ npm install --save-dev vue-svg-sprite-loader
 // webpack.config.js
 {
   test: /\.svg$/,
-  loader: 'vue-svg-sprite-loader'
+  loader: 'vue-svg-sprite-loader',
+  options: {
+    // Removes svg title, default is false when not passing any options
+    removeTitle: true
+  }
 }
 ```
 
