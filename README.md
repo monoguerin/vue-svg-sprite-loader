@@ -36,7 +36,8 @@ npm install --save-dev vue-svg-sprite-loader
 
 <script>
 import HeartIcon from './assets/iconsSprite.svg?love';
-import AlertIcon from './assets/iconsSprite.svg?alert';
+// render svg with a custom title
+import AlertIcon from './assets/iconsSprite.svg?alert&title=some-custom-text';
 
 export default {
   name: 'my-component',
