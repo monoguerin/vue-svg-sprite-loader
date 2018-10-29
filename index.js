@@ -8,7 +8,17 @@ module.exports = function (content) {
   var cb = this.async();
   var query = loaderUtils.getOptions(this) || {};
 
-  var iconRequested = this._module.rawRequest.substring(this._module.rawRequest.lastIndexOf('?')  + 1);
+  var iconInfo = loaderUtils.parseQuery(this.resourceQuery);
+  var iconRequested = null;
+  for (var key in iconInfo) {
+    if (iconInfo.hasOwnProperty(key)) {
+      var value = iconInfo[key];
+      if (value === true) {
+        iconRequested = key;
+        break;
+      }
+    }
+  }
 
   var finalString = "module.exports = {";
   var closeTag = "};";
@@ -21,7 +31,7 @@ module.exports = function (content) {
 
     if (!!key && !!viewBox && !!xmlns && !!path) {
       var openTag = "<svg xmlns='" + xmlns + "' aria-labelledby='" + key + "' viewBox='" + viewBox + "'>";
-      var titleTag = query.removeTitle ? "" : "<title>" + key + "</title>";
+      var titleTag = query.removeTitle ? "" : "<title>" + (iconInfo.title || key) + "</title>";
       var pathTag = '';
       for (let i = 0; i < symbol.path.length; i++) {
         if (symbol.path[i].$ && symbol.path[i].$.d) {
