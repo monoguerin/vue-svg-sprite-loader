@@ -1,6 +1,6 @@
 {
   "name": "vue-svg-sprite-loader",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Webpack loader that takes a sprite svg and return a Vue component with the svg inline as template that can be imported",
   "main": "index.js",
   "scripts": {
